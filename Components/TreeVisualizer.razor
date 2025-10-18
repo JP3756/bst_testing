@@ -1,0 +1,18 @@
+@using System.Text.Json
+@using bst_frontend.Services
+
+<div class="tree-visualizer border rounded p-3">
+    @if (Root == null)
+    {
+        <p class="text-muted">Tree visualization will appear here.</p>
+    }
+    else
+    {
+        <pre>@JsonSerializer.Serialize(Root, new JsonSerializerOptions { WriteIndented = true })</pre>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public BstNodeModel? Root { get; set; }
+}
