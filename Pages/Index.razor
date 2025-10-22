@@ -1,6 +1,6 @@
 @page "/"
 @using bst_frontend.Services
-@using bst_frontend.Components
+
 @inject BstApiService ApiService
 
 <PageTitle>Binary Search Tree Builder</PageTitle>
@@ -89,10 +89,11 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-6">
-            <h3>Tree Visualization</h3>
-            <TreeVisualizer Root="@treeData" />
+            <TreeVisualizer Root="treeData" />
         </div>
+
     </div>
 </div>
 

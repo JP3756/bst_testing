@@ -1,0 +1,29 @@
+@using bst_frontend.Services
+
+<div class="tree-node">
+    <div class="node-circle">@Node.Value</div>
+    @if (Node.Left != null || Node.Right != null)
+    {
+        <div class="children">
+            @if (Node.Left != null)
+            {
+                <div class="child left">
+                    <div class="connector"></div>
+                    <TreeNode Node="Node.Left" />
+                </div>
+            }
+            @if (Node.Right != null)
+            {
+                <div class="child right">
+                    <div class="connector"></div>
+                    <TreeNode Node="Node.Right" />
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public BstNodeModel Node { get; set; } = new();
+}

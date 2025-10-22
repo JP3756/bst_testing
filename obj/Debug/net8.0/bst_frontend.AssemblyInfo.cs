@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bst_frontend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f8bfc01d20b0eb9c477e3efedd7d5be13d342e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("bst_frontend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bst_frontend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -620,6 +620,7 @@ C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\bst_frontend.AssemblyInfoInputs
 C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\bst_frontend.AssemblyInfo.cs
 C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\bst_frontend.csproj.CoreCompileInputs.cache
 C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\bst_frontend.MvcApplicationPartsAssemblyInfo.cache
+C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\bst_frontend.sourcelink.json
 C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Authorization.wasm
 C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.wasm
 C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.Forms.wasm
@@ -1032,6 +1033,6 @@ C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\bst_frontend.dll
 C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\refint\bst_frontend.dll
 C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\bst_frontend.pdb
 C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\ref\bst_frontend.dll
-C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\compressed\bijmy12mvr-iotrhdwkfi.gz
-C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\compressed\1xdfv7ls11-ju0n3n4nk5.gz
-C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\compressed\9rlukcni6c-wcecthb4io.gz
+C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\compressed\bijmy12mvr-l1qntazefw.gz
+C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\compressed\1xdfv7ls11-rt37nkrsfp.gz
+C:\dotnet_projects\bst_frontend\obj\Debug\net8.0\compressed\9rlukcni6c-jk6ipgyis5.gz

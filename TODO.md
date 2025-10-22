@@ -1,6 +1,6 @@
-# TODO List for BST Frontend Setup
+# TODO: Fix Razor Language Server Error
 
-- [x] Create Pages/Index.razor as the main UI page with basic BST controls and TreeVisualizer component
-- [x] Create Services/BstApiService.cs for handling API calls to the backend
-- [x] Create Components/TreeVisualizer.razor component for displaying the tree
-- [x] Update Program.cs to register BstApiService as a scoped service
+## Steps to Complete
+- [x] Edit bst_frontend.csproj to explicitly include .razor files as RazorComponent
+- [x] Reload VSCode or restart the Razor language server to apply changes
+- [x] Verify that the semanticTokens/range and inlayHint errors are resolved
