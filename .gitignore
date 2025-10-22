@@ -1,0 +1,6 @@
+.vs/
+*.vsi8dx
+*.suo
+*.user
+bin/
+obj/
