@@ -14,7 +14,8 @@
             <div class="mb-3">
                 <input type="text" class="form-control" @bind="numberInput" placeholder="Enter a number" />
             </div>
-            <button class="btn btn-primary" @onclick="InsertValue" disabled="@isInserting">
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary" @onclick="InsertValue" disabled="@isInserting">
                 @if (isInserting)
                 {
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -24,7 +25,9 @@
                 {
                     @:Insert
                 }
-            </button>
+                </button>
+                <button class="btn btn-warning" @onclick="RestartTree">Restart</button>
+            </div>
             @if (!string.IsNullOrEmpty(message))
             {
                 <div class="mt-3 alert @alertClass">@message</div>
@@ -216,6 +219,23 @@
         catch
         {
             // Ignore errors for analytics
+        }
+    }
+
+    private async Task RestartTree()
+    {
+        try
+        {
+            await ApiService.Reset();
+            treeData = await ApiService.GetTreeAsync();
+            await LoadAnalytics();
+            message = "Tree restarted.";
+            alertClass = "alert-info";
+        }
+        catch (Exception ex)
+        {
+            message = $"Error restarting tree: {ex.Message}";
+            alertClass = "alert-danger";
         }
     }
 }

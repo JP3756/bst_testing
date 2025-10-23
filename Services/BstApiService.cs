@@ -25,6 +25,12 @@ namespace bst_frontend.Services
             response.EnsureSuccessStatusCode();
         }
 
+        public async Task Reset()
+        {
+            var response = await _httpClient.PostAsync($"/api/bst/reset", null);
+            response.EnsureSuccessStatusCode();
+        }
+
         public async Task<BstNodeModel?> GetTreeAsync()
         {
             try

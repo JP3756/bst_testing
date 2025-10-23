@@ -71,10 +71,10 @@
 }
 
 .tree-node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 0;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    padding: 10px 5px 0 5px;
 }
 
 .node-circle {
@@ -90,30 +90,49 @@
     margin-bottom: 10px;
 }
 
+/* Children container: draw a horizontal connector between children */
 .children {
+    position: relative;
     display: flex;
     justify-content: center;
-    position: relative;
+    padding-top: 20px; /* space for the connectors */
+}
+
+/* horizontal line connecting children */
+.children::before {
+    content: '';
+    position: absolute;
+    top: 10px; /* position just below the parent node */
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #007bff;
 }
 
 .child {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 20px;
+    padding-top: 10px;
 }
 
-.child.left {
-    margin-right: 40px;
-}
-
-.child.right {
-    margin-left: 40px;
-}
-
-.connector {
+/* vertical connector from horizontal line down to each child node */
+.child::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 2px;
-    height: 20px;
-    background-color: #007bff;
-    margin-bottom: 10px;
+    height: 10px;
+    background: #007bff;
 }
+
+/* small spacing adjustments for left/right children */
+.child.left { margin-right: 40px; }
+.child.right { margin-left: 40px; }
+
+/* remove old connector element usage (kept for backward-compatibility) */
+.connector { display: none; }
