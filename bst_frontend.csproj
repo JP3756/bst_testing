@@ -15,4 +15,13 @@
     <RazorComponent Include="**/*.razor" />
   </ItemGroup>
 
+  <!-- Exclude the backend project files (added into the repo) from frontend compilation
+       to avoid duplicate top-level statements and duplicate assembly attributes. -->
+  <ItemGroup>
+    <Compile Remove="bst_backend\**\*.cs" />
+    <None Remove="bst_backend\**\*.cs" />
+    <None Remove="bst_backend\**\obj\**\*" />
+    <Content Remove="bst_backend\**\*" />
+  </ItemGroup>
+
 </Project>

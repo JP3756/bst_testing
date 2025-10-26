@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bst_frontend", "bst_frontend.csproj", "{FA55B5A7-5D0F-9E50-51E8-95ADC0C30DA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BstService.Tests", "..\bst_backend\tests\BstService.Tests\BstService.Tests.csproj", "{3C741134-A524-46F3-BEA7-F20E9C7E15B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BstService.Tests", "bst_backend\Tests\BstService.Tests\BstService.Tests.csproj", "{3C741134-A524-46F3-BEA7-F20E9C7E15B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bst_backend", "bst_backend\bst_backend.csproj", "{A7ABC00A-51B3-48FA-9274-05E95695C4BD}"
 EndProject

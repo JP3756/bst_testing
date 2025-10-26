@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace bst_backend.Services
 {
     public class BstNodeModel
@@ -5,7 +8,7 @@ namespace bst_backend.Services
         public int Value { get; set; }
         public BstNodeModel? Left { get; set; }
         public BstNodeModel? Right { get; set; }
-        // store height for AVL balancing
+        // Height used for AVL balancing
         public int Height { get; set; } = 1;
     }
 
@@ -29,7 +32,7 @@ namespace bst_backend.Services
 
         private BstNodeModel InsertInternal(BstNodeModel? node, int value)
         {
-            if (node == null) return new BstNodeModel { Value = value };
+            if (node is null) return new BstNodeModel { Value = value };
 
             if (value < node.Value)
                 node.Left = InsertInternal(node.Left, value);
@@ -38,28 +41,21 @@ namespace bst_backend.Services
             else
                 return node; // duplicate, ignore
 
-            // update height
             node.Height = 1 + Math.Max(Height(node.Left), Height(node.Right));
 
-            // balance factor
-            int balance = GetBalance(node);
+            var balance = GetBalance(node);
 
-            // Left Left Case
-            if (balance > 1 && value < node.Left!.Value)
-                return RightRotate(node);
-
-            // Right Right Case
-            if (balance < -1 && value > node.Right!.Value)
-                return LeftRotate(node);
-
-            // Left Right Case
+            // Left Left
+            if (balance > 1 && value < node.Left!.Value) return RightRotate(node);
+            // Right Right
+            if (balance < -1 && value > node.Right!.Value) return LeftRotate(node);
+            // Left Right
             if (balance > 1 && value > node.Left!.Value)
             {
                 node.Left = LeftRotate(node.Left!);
                 return RightRotate(node);
             }
-
-            // Right Left Case
+            // Right Left
             if (balance < -1 && value < node.Right!.Value)
             {
                 node.Right = RightRotate(node.Right!);
@@ -71,22 +67,16 @@ namespace bst_backend.Services
 
         private int Height(BstNodeModel? node) => node?.Height ?? 0;
 
-        private int GetBalance(BstNodeModel? node)
-        {
-            if (node == null) return 0;
-            return Height(node.Left) - Height(node.Right);
-        }
+        private int GetBalance(BstNodeModel? node) => node == null ? 0 : Height(node.Left) - Height(node.Right);
 
         private BstNodeModel RightRotate(BstNodeModel y)
         {
             var x = y.Left!;
-            var T2 = x.Right;
+            var t2 = x.Right;
 
-            // rotate
             x.Right = y;
-            y.Left = T2;
+            y.Left = t2;
 
-            // update heights
             y.Height = 1 + Math.Max(Height(y.Left), Height(y.Right));
             x.Height = 1 + Math.Max(Height(x.Left), Height(x.Right));
 
@@ -96,13 +86,11 @@ namespace bst_backend.Services
         private BstNodeModel LeftRotate(BstNodeModel x)
         {
             var y = x.Right!;
-            var T2 = y.Left;
+            var t2 = y.Left;
 
-            // rotate
             y.Left = x;
-            x.Right = T2;
+            x.Right = t2;
 
-            // update heights
             x.Height = 1 + Math.Max(Height(x.Left), Height(x.Right));
             y.Height = 1 + Math.Max(Height(y.Left), Height(y.Right));
 
@@ -116,7 +104,7 @@ namespace bst_backend.Services
 
         private void TraverseInorder(BstNodeModel? node, List<int> outList)
         {
-            if (node == null) return;
+            if (node is null) return;
             TraverseInorder(node.Left, outList);
             outList.Add(node.Value);
             TraverseInorder(node.Right, outList);
@@ -124,7 +112,7 @@ namespace bst_backend.Services
 
         private void TraversePreorder(BstNodeModel? node, List<int> outList)
         {
-            if (node == null) return;
+            if (node is null) return;
             outList.Add(node.Value);
             TraversePreorder(node.Left, outList);
             TraversePreorder(node.Right, outList);
@@ -132,20 +120,32 @@ namespace bst_backend.Services
 
         private void TraversePostorder(BstNodeModel? node, List<int> outList)
         {
-            if (node == null) return;
+            if (node is null) return;
             TraversePostorder(node.Left, outList);
             TraversePostorder(node.Right, outList);
             outList.Add(node.Value);
         }
 
-        public string Inorder() { lock (_lock) { var l = new List<int>(); TraverseInorder(_root, l); return string.Join(",", l); } }
-        public string Preorder() { lock (_lock) { var l = new List<int>(); TraversePreorder(_root, l); return string.Join(",", l); } }
-        public string Postorder() { lock (_lock) { var l = new List<int>(); TraversePostorder(_root, l); return string.Join(",", l); } }
+        public string Inorder()
+        {
+            lock (_lock) { var l = new List<int>(); TraverseInorder(_root, l); return string.Join(",", l); }
+        }
+
+        public string Preorder()
+        {
+            lock (_lock) { var l = new List<int>(); TraversePreorder(_root, l); return string.Join(",", l); }
+        }
+
+        public string Postorder()
+        {
+            lock (_lock) { var l = new List<int>(); TraversePostorder(_root, l); return string.Join(",", l); }
+        }
+
         public string LevelOrder()
         {
             lock (_lock)
             {
-                if (_root == null) return "";
+                if (_root == null) return string.Empty;
                 var q = new Queue<BstNodeModel>();
                 var outList = new List<int>();
                 q.Enqueue(_root);
@@ -160,22 +160,22 @@ namespace bst_backend.Services
             }
         }
 
-        public int GetMinimum()
+        public int? GetMinimum()
         {
             lock (_lock)
             {
-                if (_root == null) return 0;
+                if (_root == null) return null;
                 var cur = _root;
                 while (cur.Left != null) cur = cur.Left;
                 return cur.Value;
             }
         }
 
-        public int GetMaximum()
+        public int? GetMaximum()
         {
             lock (_lock)
             {
-                if (_root == null) return 0;
+                if (_root == null) return null;
                 var cur = _root;
                 while (cur.Right != null) cur = cur.Right;
                 return cur.Value;
@@ -188,6 +188,6 @@ namespace bst_backend.Services
         public int GetLeafNodes() { lock (_lock) { return CountLeaves(_root); } }
         private int CountLeaves(BstNodeModel? node) { if (node == null) return 0; if (node.Left==null && node.Right==null) return 1; return CountLeaves(node.Left) + CountLeaves(node.Right); }
 
-    public int GetTreeHeight() { lock (_lock) { return Height(_root); } }
+        public int GetTreeHeight() { lock (_lock) { return Height(_root); } }
     }
 }

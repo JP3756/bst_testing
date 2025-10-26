@@ -54,7 +54,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Minimum</h6>
-                            <p class="card-text">@minValue</p>
+                            <p class="card-text">@((minValue.HasValue) ? minValue.Value.ToString() : "-")</p>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Maximum</h6>
-                            <p class="card-text">@maxValue</p>
+                            <p class="card-text">@((maxValue.HasValue) ? maxValue.Value.ToString() : "-")</p>
                         </div>
                     </div>
                 </div>
@@ -107,8 +107,8 @@
     private string alertClass = "";
     private bool isInserting = false;
     private string traversalResult = "";
-    private int minValue = 0;
-    private int maxValue = 0;
+    private int? minValue = null;
+    private int? maxValue = null;
     private int totalNodes = 0;
     private int leafNodes = 0;
     private int treeHeight = 0;

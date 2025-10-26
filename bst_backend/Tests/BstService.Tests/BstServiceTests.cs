@@ -32,5 +32,18 @@ namespace BstService.Tests
             // For AVL tree height of 7 nodes should be <= 4
             Assert.InRange(height, 1, 4);
         }
+
+            [Fact]
+            public void MinMax_ReturnNull_WhenEmpty()
+            {
+                var svc = new bst_backend.Services.BstService();
+                // empty tree
+                Assert.Null(svc.GetMinimum());
+                Assert.Null(svc.GetMaximum());
+
+                svc.Insert(42);
+                Assert.Equal(42, svc.GetMinimum());
+                Assert.Equal(42, svc.GetMaximum());
+            }
     }
 }
